@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DNS Toggle</string>
+    <string name="tile_label">Private DNS</string>
+</resources>
