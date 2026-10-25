@@ -2,6 +2,7 @@ package com.deon.dnstoggle
 
 import android.content.ComponentName
 import android.content.Context
+import android.graphics.drawable.Icon
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 
@@ -21,7 +22,10 @@ class DnsTile : TileService() {
         val tile = qsTile ?: return
         val on = DnsControl.isOn(this)
         tile.state = if (on) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
-        tile.subtitle = if (on) DnsControl.savedHost(this) else "Off"
+        tile.icon = Icon.createWithResource(
+            this, if (on) R.drawable.ic_tile_on else R.drawable.ic_tile_off
+        )
+        tile.subtitle = if (on) "ON" else "OFF"
         tile.updateTile()
     }
 
