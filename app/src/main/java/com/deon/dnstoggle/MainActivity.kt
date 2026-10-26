@@ -256,11 +256,19 @@ class MainActivity : Activity() {
         }
         root.addView(credit)
 
+        val updateBtn = modernButton("Check for updates", false)
+        updateBtn.layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT, dp(46)
+        ).apply { setMargins(0, dp(8), 0, 0) }
+        updateBtn.setOnClickListener { UpdateCheck.check(this, manual = true) }
+        root.addView(updateBtn)
+
         val scroll = ScrollView(this)
         scroll.setBackgroundColor(bg)
         scroll.addView(root)
         setContentView(scroll)
         refresh()
+        UpdateCheck.autoCheck(this)
     }
 
     override fun onResume() {

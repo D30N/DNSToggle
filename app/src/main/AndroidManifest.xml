@@ -4,6 +4,8 @@
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"
         tools:ignore="ProtectedPermissions"
         xmlns:tools="http://schemas.android.com/tools" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
         android:allowBackup="true"
@@ -55,5 +57,12 @@
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
+
+        <!-- Update APK provider (framework-only, serves cache/update/) -->
+        <provider
+            android:name=".UpdateFileProvider"
+            android:authorities="com.deon.dnstoggle.files"
+            android:exported="false"
+            android:grantUriPermissions="true" />
     </application>
 </manifest>
