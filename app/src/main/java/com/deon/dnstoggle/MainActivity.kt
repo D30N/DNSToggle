@@ -103,6 +103,7 @@ class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        recordAnalytics()
 
         val root = LinearLayout(this)
         root.orientation = LinearLayout.VERTICAL
